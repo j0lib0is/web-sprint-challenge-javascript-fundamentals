@@ -157,9 +157,9 @@ function greeting(fName, lName){
 
 
 
-// 🐴🐴🐴 Topic 3: Prototypes 🐴🐴🐴 //
+// 🐴🐴🐴 ✅ Topic 3: Prototypes 🐴🐴🐴 //
 
-//🐴🐴🐴 Task: You are to build a cuboid maker that can return values for a cuboid's volume or surface area. Cuboids are similar to cubes but do not have even sides. Follow the steps in order to accomplish this challenge. 🐴🐴🐴
+//🐴🐴🐴 ✅ Task: You are to build a cuboid maker that can return values for a cuboid's volume or surface area. Cuboids are similar to cubes but do not have even sides. Follow the steps in order to accomplish this challenge. 🐴🐴🐴
 
 /* 🐴🐴🐴 ✅ Step 1: Base Constructor 🐴🐴🐴
  ✅ Use the constructor function named CuboidMaker to accept properties for length, width, and height which can be initialized as an object
@@ -225,14 +225,32 @@ const cuboid = new CuboidMaker({
 
 
 
-// 🦄🦄🦄 Topic 4: Classes 🦄🦄🦄 //
-//🦄🦄🦄 1. Take your prototypes from above and refactor into class syntax. Please rename your class CuboidMakerTwo and your object cuboidTwo 🦄🦄🦄
+// 🦄🦄🦄 ✅ Topic 4: Classes 🦄🦄🦄 //
+
+//🦄🦄🦄 ✅ 1. Take your prototypes from above and refactor into class syntax. Please rename your class CuboidMakerTwo and your object cuboidTwo 🦄🦄🦄
 
 class CuboidMakerTwo{
-
+  constructor(obj) {
+    this.length = obj.length;
+    this.width = obj.width;
+    this.height = obj.height;
+  }
+  volume(){
+    return this.length * this.width * this.height;
+  };
+  surfaceArea() {
+    return 2 * (this.length * this.width + this.length * this.height + this.width * this.height);
+  }
 }
 
-//🦄🦄🦄 Test your volume and surfaceArea methods by uncommenting the logs below: 🦄🦄🦄
+const cuboidTwo = new CuboidMakerTwo({
+  length: 4,
+  width: 5,
+  height: 5,
+})
+
+
+//🦄🦄🦄 ✅ Test your volume and surfaceArea methods by uncommenting the logs below: 🦄🦄🦄
 // console.log(cuboidTwo.volume()); // 100
 // console.log(cuboidTwo.surfaceArea()); // 130
 
