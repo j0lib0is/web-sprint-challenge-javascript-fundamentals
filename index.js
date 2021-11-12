@@ -1,6 +1,6 @@
-//🚀🚀🚀  Topic #1 Closures 🚀🚀🚀//
-/* 🚀🚀🚀🤓 Task 1: 🤓🚀🚀🚀 
-Study the code below and explain in your own words why nested function can access the variable internal. */
+//🚀🚀🚀 Topic #1 Closures 🚀🚀🚀//
+/* 🚀🚀🚀🤓 ✅ Task 1: 🤓🚀🚀🚀 
+✅ Study the code below and explain in your own words why nested function can access the variable internal. */
 
 const external = "I'm outside the function";
 
@@ -15,26 +15,31 @@ function myFunction() {
 }
 myFunction();
 
-//🚀🚀🚀 ⬇️ 📝 Explanation ⬇️ 📝 🚀🚀🚀: 
+//🚀🚀🚀 ⬇️ 📝 ✅ Explanation ⬇️ 📝 🚀🚀🚀: 
 // Answer: nestedFunction is a child of myFunction which creates a lexical environment that includes the parent's variables since variables are inherited similar to CSS classes.
 
 
 
-/* 🚀🚀🚀 Task 2: Counter 🚀🚀🚀 */
+/* 🚀🚀🚀 ✅ Task 2: Counter 🚀🚀🚀 */
 /* Use summation to do the following:
-    1. Receive a number 
-    2. Use a counter to return the summation of that number. 
+    1. ✅ Receive a number 
+    2. ✅ Use a counter to return the summation of that number. 
     
 For example, `summation(4)` should return 10 because 1+2+3+4 is 10. Note, you may use a for loop for this function if you wish */
 
-function summation(/*Your Code Here*/) {
-  /*Your Code Here*/
-
+function summation(number) {
+  let counter = 0;
+  for (let i = 0; i <= number; i++) {
+    counter += i;
   }
+  return counter;
+  }
+// TEST
+// console.log(summation(4));
 
 
 
-  // 🦁🦁🦁 Topic 2: ADVANCED Array Methods 🦁🦁🦁
+// 🦁🦁🦁 Topic 2: ADVANCED Array Methods 🦁🦁🦁
 // Given this zoo data from around the United States, follow the instructions below. Use the specific array methods in the requests below to solve the problems.
 
 const zooAnimals = [
@@ -51,36 +56,46 @@ const zooAnimals = [
   ];
 
 
-  /* 🦁🦁🦁 Request 1: .forEach() 🦁🦁🦁
-  The zoos want to display both the scientific name and the animal name in front of the habitats. 
-  Use animalNames to populate and return the displayNames array with only the animal name and scientific name of each animal. 
-  displayNames will be an array of strings, and each string should follow this pattern: "name: {name}, scientific: {scientific name}"
+/* 🦁🦁🦁 ✅ Request 1: .forEach() 🦁🦁🦁
+✅ The zoos want to display both the scientific name and the animal name in front of the habitats. 
+✅ Use animalNames to populate and return the displayNames array with only the animal name and scientific name of each animal. 
+✅ displayNames will be an array of strings, and each string should follow this pattern: "name: {name}, scientific: {scientific name}"
+*/
+
+function animalNames(data){
+  const displayNames = [];
+  data.forEach(item => displayNames.push(`name: ${item.animal_name}, scientific: ${item.scientific_name}`));
+  return displayNames;
+}
+// TEST
+// console.log(animalNames(zooAnimals));
+
+
+  /* 🦁🦁🦁 ✅ Request 2: .map() 🦁🦁🦁
+ ✅ The zoo needs a list of all their animal's names converted to lower case. 
+ ✅ Using lowerCaseNames use .map() to create a new array of strings with the animal's names in lowercase and return the new array. 
+ ✅ For example: ['jackal, asiatic', .....]
   */
 
-  function animalNames(/*Your Code Here*/){
-    /*Your Code Here*/
+  function lowerCaseNames(data){
+    return data.map(item => `${item.animal_name.toLowerCase()}`);
   }
+// TEST
+// console.log(lowerCaseNames(zooAnimals));
 
 
-  /* 🦁🦁🦁 Request 2: .map() 🦁🦁🦁
-  The zoo needs a list of all their animal's names converted to lower case. 
-  Using lowerCaseNames use .map() to create a new array of strings with the animal's names in lowercase and return the new array. 
-  For example: ['jackal, asiatic', .....]
+
+  /* 🦁🦁🦁 ✅ Request 3: .filter() 🦁🦁🦁
+  ✅ The zoo is concerned about animals with a lower population count. 
+  ✅ Using lowPopulationAnimals use .filter() to create a new array of objects which contains only the animals with a population of less than 5.
   */
 
-  function lowerCaseNames(/*Your Code Here*/){
-    /*Your Code Here*/
+  function lowPopulationAnimals(data){
+    return data.filter(item => item.population < 5);
   }
+  // TEST
+  // console.log(lowPopulationAnimals(zooAnimals));
 
-
-  /* 🦁🦁🦁 Request 3: .filter() 🦁🦁🦁
-  The zoo is concerned about animals with a lower population count. 
-  Using lowPopulationAnimals use .filter() to create a new array of objects which contains only the animals with a population of less than 5.
-  */
-
-  function lowPopulationAnimals(/*Your Code Here*/){
-    /*Your Code Here*/
-  }
 
 
   /* 🦁🦁🦁 Request 4: .reduce() 🦁🦁🦁
@@ -89,9 +104,11 @@ const zooAnimals = [
   Remember the reduce method takes two arguments: a callback (which itself takes two args - the accumulator and the item), and an initial value for the count.
   */
 
-  function USApop(/*Your Code Here*/){
-    /*Your Code Here*/
+  function USApop(data){
+    return data.reduce((sum, animal) => sum + animal.population, 0);
   }
+  // TEST
+  console.log(USApop(zooAnimals));
 
 
   // 🦁🦁🦁 Callbacks 🦁🦁🦁  
